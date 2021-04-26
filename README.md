@@ -1,7 +1,7 @@
 # 2021-jan-mintd-banking-app
-Presented by Waseem, Harry, Mike & Damien
+### Presented by Waseem, Harry, Mike & Damien
 
-Getting Started
+## Getting Started :-
 1. git clone git@github.com:iO-Academy/2021-jan-mintd-banking-app.git
 2. cd into /client
 3. npm install
@@ -9,16 +9,21 @@ Getting Started
 5. open a new terminal window
 6. cd /api
 6. npm install
-7. npm run
-8 check http://localhost:3000/ in browser for frontend
+7. npm start
+8. check http://localhost:3000/ in browser for frontend
 9. check http://localhost:9000/ in browser for backend
    
 
-using React, Express, React-bootstrap, bootstrap and MongoDB
+## Using React, Express, React-bootstrap, bootstrap and MongoDB
 
-DB info
+### DB info
 
-db name = mintd
-db channel = 27017
-username: root
-password: password
+- db name = mintd
+- db channel = 27017
+- username: root
+- password: password
+
+in mongoDB :-
+
+1. create a db named "mintd"
+2. create a document called "users"
