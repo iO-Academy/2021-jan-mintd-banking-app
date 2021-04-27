@@ -24,7 +24,7 @@ class App extends React.Component {
 
   callAPIforAccount() {
     //this is fetching from the getAccountByName page in api/routes
-    fetch("http://localhost:9000/getAccountByName")
+    fetch("http://localhost:9000/getAccountByCustomerNumber/012345678910")
         .then(res => res.text())
         .then(res => this.setState({ getAccountResponse: res }));
   }
@@ -41,7 +41,7 @@ class App extends React.Component {
         <div>
 
             <h1>Damien is the best</h1>
-            <p>{this.state.apiResponse}</p>
+            {/*<p>{this.state.apiResponse}</p>*/}
             <p>{this.state.getAccountResponse}</p>
 
         </div>

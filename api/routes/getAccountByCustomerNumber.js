@@ -16,16 +16,15 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-router.get('/', function(req, res, next) {
-
+router.get('/:customerNumber', function(req, res, next) {
+    const customerNumber = req.params.customerNumber
     mongoClient.connect(mongoUrl, mongoSettings, async (error, client) => {
         console.log('Connected to MongoDB!')
         //using mongo client to get db then collection from db
         const usersCollection = client.db('mintd').collection('users')
-        // const allData = await usersCollection.find({}).toArray()
-        const accountName = await usersCollection.find({"UserName": 'Test Entry'}).toArray()
-        // const accountName = await usersCollection.find({"UserName": "Test Entry"}).toArray()
-        res.send(accountName);
+        const customerData = await usersCollection.findOne({"CustomerNumber": customerNumber})
+
+        res.send(customerData);
     })
 });
 

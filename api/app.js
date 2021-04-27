@@ -8,7 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var testAPIRouter = require('./routes/testAPI')
 var dbAPIRouter = require('./routes/dbHandler')
-var getAccountByNameRouter = require('./routes/getAccountByName')
+var getAccountByNameRouter = require('./routes/getAccountByCustomerNumber')
 
 var app = express();
 

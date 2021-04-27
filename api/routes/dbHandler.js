@@ -42,6 +42,7 @@ router.get('/:AccountNumber', function (request, response) {
         const usersCollection = client.db('mintd').collection('users')
         // const allData = await usersCollection.find({}).toArray()
         const accountName = await usersCollection.findOne({"AccountNumber": accNo})
+        // const accountName = await usersCollection.find({"AccountNumber" : { $in: ["100001"]}})
         // const accountName = await usersCollection.find({"UserName": "Test Entry"}).toArray()
         response.send(accountName);
     })
