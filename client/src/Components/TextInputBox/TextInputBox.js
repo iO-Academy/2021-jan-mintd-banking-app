@@ -2,7 +2,7 @@ import React from "react";
 class TextInputBox extends React.Component {
     render() {
         return (
-            <input type="text" placeholder={this.props.placeholder}/>
+            <input onChange={this.props.change} type="text" placeholder={this.props.placeholder}/>
         )
     }
 }
