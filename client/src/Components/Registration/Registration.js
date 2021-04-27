@@ -38,8 +38,8 @@ class Registration extends React.Component{
 
                 <Title titleText={"Registration"} />
                 <div className={'auth-inputs-container'}>
-                    <TextInputBox change={(e) => this.nameInput(e)} placeholder={'name'} />
-                    <TextInputBox change={(e) => this.customerNumberInput(e)} placeholder={'1234-5678-9999'} />
+                    <TextInputBox type={'text'} change={(e) => this.nameInput(e)} placeholder={'name'} />
+                    <TextInputBox type={'text'} change={(e) => this.customerNumberInput(e)} placeholder={'1234-5678-9999'} />
                 </div>
                 <UserContext.Provider value={{isRegistered: this.state.isRegistered, username: this.state.username, customerNumber: this.state.customerNumber}}>
                     <Link to={'/create-pass-code'}>
