@@ -30,24 +30,17 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.get('/:AccountNumber', function (request, response) {
-// let allToDoId = request.params.id; ///from before
-//     const id = objectId(request.params.id)
-    // const accountNumber = request.params.accountNumber
-    const accNo = request.params.BasicAccount
+router.get('/:accountNumber', jsonParser, function(request, response) {
+
+    const customerNo = request.params.accountNumber
 
     mongoClient.connect(mongoUrl, mongoSettings, async (error, client) => {
         console.log('Connected to MongoDB!')
-        //using mongo client to get db then collection from db
         const usersCollection = client.db('mintd').collection('users')
         // const allData = await usersCollection.find({}).toArray()
-        const accountName = await usersCollection.findOne({"AccountNumber": accNo})
-        // const accountName = await usersCollection.find({"AccountNumber" : { $in: ["100001"]}})
-        // const accountName = await usersCollection.find({"UserName": "Test Entry"}).toArray()
-        response.send(accountName);
+        const accountNumber = await usersCollection.findOne({"customerNumber": customerNo})
+        response.send(accountNumber);
     })
-
-
 })
 
 module.exports = router;
