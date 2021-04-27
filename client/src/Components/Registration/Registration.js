@@ -4,38 +4,49 @@ import ActionButton from "../ActionButton/ActionButton";
 import Title from "../Title/Title";
 import Logo from "../Logo/Logo";
 import TextInputBox from "../TextInputBox/TextInputBox";
-import Validation from "../Validation/Validation";
+import {Link} from "react-router-dom";
 
 class Registration extends React.Component{
 
     constructor(props) {
-        super(props)
+
+        super(props);
         this.state = {
-            userName: '',
-            customerNumber: 1111 - 2222 - 3333
+            isRegistered: false,
+            username: '',
+            customerNumber: ''
         }
     }
 
-    setUserName = (e) => {
-        this.setState({
-            userName: e.target.value
-        })
-    }
+    nameInput = (e) => {
+        let username = e.target.value
+        this.setState ({
+            username: username
+            }
+        )}
 
+    customerNumberInput = (e) => {
+        let customerNumber = e.target.value
+        this.setState ({
+            customerNumber: customerNumber
+            }
+        )}
 
     render(){
         return(
             <div className="content-container">
                 <Logo />
-                <UserContext.Consumer>
-                    {({isLoggedIn}) => <p>{isLoggedIn}</p>}
-                </UserContext.Consumer>
+
                 <Title titleText={"Registration"} />
                 <div className={'auth-inputs-container'}>
-                    <TextInputBox className="username" placeholder={'name'} change={(e) => this.setUserName(e)}/>
-                    <TextInputBox placeholder={'1234-5678-9999'} />
+                    <TextInputBox type={'text'} change={(e) => this.nameInput(e)} placeholder={'name'} />
+                    <TextInputBox type={'text'} change={(e) => this.customerNumberInput(e)} placeholder={'1234-5678-9999'} />
                 </div>
-                <ActionButton click={Validation.validateUserName(this.state.userName)} btnText={"next"} />
+                <UserContext.Provider value={{isRegistered: this.state.isRegistered, username: this.state.username, customerNumber: this.state.customerNumber}}>
+                    <Link to={'/create-pass-code'}>
+                        <ActionButton btnText={"next"}></ActionButton>
+                    </Link>
+                </UserContext.Provider>
             </div>
         )
     }
