@@ -33,23 +33,37 @@ class CreatePassCode extends React.Component {
             }
         )}
 
-    // s2t3 woops
-    validatePassCode(){
+    validateFormat() {
+        const isSixDigits = /^[0-9]{6}$/
         let first = this.state.firstPassCode;
         let second = this.state.secondPassCode;
-        first === second ? this.setState({
-            passcode: first,
-            btnText: 'Register',
-            link: '/main-accounts'
-        }) : alert('Passcodes do not match');
+
+        if(isSixDigits.test(first)
+            && isSixDigits.test(second)
+            && first === second
+        ){
+           this.setState({
+                passcode: first,
+                btnText: 'Register',
+                link: '/main-accounts'
+            })
+            this.setCookie()
+        } else {
+            alert('Passcodes do not match')
+        }
     }
 
+    setCookie() {
+        document.cookie = 'isRegistered=true'
+    }
+
+    allCookies = document.cookie['isRegistered']
 
     render(){
         return(
             <div className="content-container">
+                <p>{this.allCookies}</p>
                 <Logo />
-
                 <Title titleText={"Create Your Passcode"} />
                 <div className={'auth-inputs-container'}>
                     <TextInputBox type={"password"} change={(e) => this.firstPassCodeInput(e)} placeholder={'create 6 digit passcode'} />
@@ -57,7 +71,7 @@ class CreatePassCode extends React.Component {
                 </div>
                 <UserContext.Provider value={{isRegistered: this.state.isRegistered, username: this.state.username, customerNumber: this.state.customerNumber}}>
                     <Link to={this.state.link}>
-                        <ActionButton click={() => this.validatePassCode()} btnText={this.state.btnText}></ActionButton>
+                        <ActionButton click={() => this.validateFormat()} btnText={this.state.btnText}></ActionButton>
                     </Link>
                 </UserContext.Provider>
             </div>

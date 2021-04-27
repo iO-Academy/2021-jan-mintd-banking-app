@@ -1,7 +1,5 @@
 import React from 'react';
 import './App.css';
-import UserContext from "./Components/UserContext";
-
 
 class App extends React.Component {
   constructor(props) {
@@ -12,9 +10,8 @@ class App extends React.Component {
   }
 
   isRegistered(){
-
-    let isRegistered =  document.cookie.registered
-    if(isRegistered !== undefined && isRegistered !== null){
+    let isRegistered = document.cookie
+    if(isRegistered === 'isRegistered=true' && isRegistered !== undefined && isRegistered !== null){
       window.location = '/login';
     } else {
       window.location = '/registration';
