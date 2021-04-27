@@ -1,0 +1,105 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #153B50;
+}
+
+html {
+  font-size: 62.5%;
+
+}
+
+body {
+  margin: 30px;
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  color: #153B50;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+input {
+  color: #153B50;
+  font-size: 2rem;
+  font-weight: 400;
+  background-color: #F3FFFE;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  border-style: hidden;
+  border-radius: 8px;
+  height: 50px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input:focus {
+  border-style: hidden;
+
+}
+
+.main-container {
+  position: relative;
+  bottom: 0;
+  height: calc(100vh - 60px);
+}
+
+.content-container {
+  height: 100%;
+  position: relative;
+  bottom: 0;
+}
+
+.component-container {
+  height: 100%;
+  position: relative;
+}
+
+.auth-inputs-container {
+  display: flex;
+  flex-flow: column nowrap;
+  /*border: 2px solid black;*/
+  /*height: 100%;*/
+}
+
+.logo-img {
+  display: block;
+  margin: 0 auto;
+  padding-top: 30px;
+  width: 120px;
+}
+
+.logo-img {
+  width: 50%;
+}
+
+.title {
+  font-size: 2.8rem;
+  font-weight: 500;
+  text-align: center;
+  margin: 40px 0;
+}
+
+.action-btn {
+  font-size: 2.4rem;
+  font-weight: 500;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  background: #03DAC5;
+  border-style: hidden;
+  /*note that box shadow is 15px and 0.15 alpha on action buttons*/
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  width: 100%;
+  height: 50px;
+}
+
+.notFoundBtn {
+
+}
