@@ -7,14 +7,13 @@ class App extends React.Component {
     super(props);
     this.state = {
       isRegistered: false,
-      isLoggedIn: 'hello'
+      isLoggedIn: false
     }
   }
   render(){
     return (
-        <div>
+        <div className="main-container">
           <UserContext.Provider value={{isLoggedIn: this.state.isLoggedIn, isRegistered: this.state.isRegistered}}>
-            <h1>Damien is the best</h1>
             <Registration />
           </UserContext.Provider>
         </div>

@@ -1,21 +1,24 @@
 import React from 'react'
 import UserContext from "../UserContext";
-import MyButton from '../Button/MyButton'
+import ActionButton from "../ActionButton/ActionButton";
+import Title from "../Title/Title";
+import Logo from "../Logo/Logo";
+import TextInputBox from "../TextInputBox/TextInputBox";
 class Registration extends React.Component{
-    //constructor state
-    constructor(props){
-        super(props);
-        this.state = {
-            text: 'next'
-        }
-    }
+
     render(){
         return(
-            <div>
+            <div className="content-container">
+                <Logo />
                 <UserContext.Consumer>
                     {({isLoggedIn}) => <p>{isLoggedIn}</p>}
-                    <MyButton text={this.state.next} />
                 </UserContext.Consumer>
+                <Title titleText={"Registration"} />
+                <div className={'auth-inputs-container'}>
+                    <TextInputBox placeholder={'name'} />
+                    <TextInputBox placeholder={'1234-5678-9999'} />
+                </div>
+                <ActionButton btnText={"next"} />
             </div>
         )
     }
