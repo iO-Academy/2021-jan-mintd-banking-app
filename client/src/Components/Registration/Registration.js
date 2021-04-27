@@ -11,7 +11,7 @@ class Registration extends React.Component{
             <div className="content-container">
                 <Logo />
                 <UserContext.Consumer>
-                    {({isLoggedIn}) => <p>{isLoggedIn}</p>}
+                    {({isRegistered}) => <p>{isRegistered}</p>}
                 </UserContext.Consumer>
                 <Title titleText={"Registration"} />
                 <div className={'auth-inputs-container'}>

@@ -12,7 +12,7 @@ class App extends React.Component {
   }
   render(){
     return (
-        <div className="main-container">
+        <div className="component-container">
           <UserContext.Provider value={{isLoggedIn: this.state.isLoggedIn, isRegistered: this.state.isRegistered}}>
             <Registration />
           </UserContext.Provider>
