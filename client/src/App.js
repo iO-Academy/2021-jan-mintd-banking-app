@@ -6,12 +6,10 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isRegistered: false,
       getAccountResponse: "",
       postResponse: "",
       isRegistered: false,
       isLoggedIn: 'hello'
-    }
     }
   }
 
