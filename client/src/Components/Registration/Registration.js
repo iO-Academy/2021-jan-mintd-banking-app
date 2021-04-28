@@ -14,7 +14,7 @@ class Registration extends React.Component{
         super(props);
         this.state = {
             isRegistered: false,
-            username: 'it works',
+            username: '',
             customerNumber: ''
         }
     }

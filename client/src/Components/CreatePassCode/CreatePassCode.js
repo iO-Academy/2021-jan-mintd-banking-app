@@ -17,6 +17,7 @@ class CreatePassCode extends React.Component {
             passCode: '',
             username: sessionStorage.getItem("username"),
             customerNumber: sessionStorage.getItem("customerNumber"),
+            postResponse: '',
             btnText: 'Enter Valid Passcode',
             link: '/create-pass-code'
         }
@@ -48,11 +49,15 @@ class CreatePassCode extends React.Component {
     validatePassCode(){
         let first = this.state.firstPassCode;
         let second = this.state.secondPassCode;
-        first === second ? this.setState({
-            passcode: first,
-            btnText: 'Register',
-            link: '/main-accounts'
-        }) : alert('Passcodes do not match');
+        if(first === second) {
+            this.setState({
+                passcode: first,
+                btnText: 'Register',
+                link: '/main-accounts'})
+            this.postToAPI(this.template)
+        } else {
+            alert('Passcodes do not match');
+        }
     }
 
     //POST TEMPLATE//
@@ -62,18 +67,20 @@ class CreatePassCode extends React.Component {
     timeCreated = new Date().toLocaleTimeString()
 
 
-    preparePost = () => {
+    //POST ROUTE
+    postToAPI() {
         const template = {
             "customerNumber": this.state.customerNumber,
             "username": this.state.username,
             "email": "",
             "passcode": this.state.passcode,
-            "accounts" : [
+            "accountsArray" : [
                 {
-                    "standardAccount": {
+                    "account": {
                         "accountNumber": this.accountNumberGenerator,
+                        "accountType": "CurrentAccount",
                         "balance": 150,
-                        "accountLabel": "MainAccount",
+                        "accountLabel": "CurrentAccount",
                         "canWithdraw": true,
                         "transactionHistory": [{
                             "transactionId": 1,
@@ -86,44 +93,28 @@ class CreatePassCode extends React.Component {
                     }
                 }]
         }
-        return template
-    }
 
-    componentDidMount() {
-        this.updateUsername()
-        console.log(this.preparePost())
-
-    }
-
-    //POST ROUTE
-    postToAPI(data) {
-        fetch("http://localhost:9000/newAcount", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json"
-            }
+        fetch("http://localhost:9000/newAccount", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(template)
         })
-            .then(res => res.text())
-            .then(res => this.setState({ postResponse: res }));
+            .then(res => res.json())
+            .then(res => this.setState({ postResponse: res })
+            )
     }
 
     render(){
         return(
             <div className="content-container">
                 <Logo />
-                <UserContext.Consumer>
-                    {( {username} ) => <p>The current username is {username}</p> }
-                </UserContext.Consumer>
                 <Title titleText={"Create Your Passcode"} />
                 <div className={'auth-inputs-container'}>
                     <TextInputBox type={"password"} change={(e) => this.firstPassCodeInput(e)} placeholder={'create 6 digit passcode'} />
                     <TextInputBox type={"password"} change={(e) => this.secondPassCodeInput(e)} placeholder={'re-enter 6 digit passcode'} />
                 </div>
                     <Link to={this.state.link}>
-                        <ActionButton click={() => {
-                            this.validatePassCode()
-                        }} btnText={this.state.btnText}></ActionButton>
+                        <ActionButton click={() => {this.validatePassCode()}} btnText={this.state.btnText} />
                     </Link>
             </div>
         )
