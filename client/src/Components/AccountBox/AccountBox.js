@@ -1,18 +1,21 @@
 import React from "react";
 
 class AccountBox extends React.Component {
+
+
+
     render() {
         return (
             <div className='account-box'>
                 <div className="account-info">
-                    <div><p>#17374714</p></div>
-                    <div><p>£150.00</p></div>
+                    <div><p>#{this.props.accNo}</p></div>
+                    <div><p>£{this.props.accBal}</p></div>
                 </div>
                 <div className="account-label">
-                    <div><p>Main Account</p></div>
+                    <div><p>{this.props.accLabel}</p></div>
                 </div>
                 <div className="account-type-delete">
-                    <div><p>Current Account [primary]</p></div>
+                    <div><p>{this.props.accType}</p></div>
                     <div><img className="red-x-icon" src='/red-x-icon.png'/></div>
                 </div>
             </div>

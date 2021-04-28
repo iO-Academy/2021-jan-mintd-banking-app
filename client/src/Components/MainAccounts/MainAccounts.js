@@ -15,37 +15,107 @@ class MainAccounts extends React.Component {
         this.state = {
                 utilitySrc: '/menu-icon.png',
                 name:"dadad"
+
         }
     }
 
-// {
-//     "_id": {
-//         "$oid": "6086c606e818eff966ac703c"
-//     },
-//     "Customer Number":"012345678910",
-//     "Name":"Test Entry",
-//     "Email":"test@test.com",
-//     "Passcode":123456,
-//     "Accounts":[
-//         {
-//             "Standard Account":{
-//                 "Account Number":100001,
-//                 "Balance":0,
-//                 "Account Label":"Main Account",
-//                 "Can Withdraw":true,
-//                 "Transaction History":[
-//                     {
-//                         "Transaction ID":1,
-//                         "Time":"13:30:33",
-//                         "Date":"26/04/2021",
-//                         "Amount":150,
-//                         "From":"Mintd joining gift.",
-//                         "To":"Name: Account"
-//                     }
-//                 ]
-//             }
-//         }]
-// }
+    accountBoxPopulator = () => {
+        for (let accData of this.data.accounts) {
+            console.log(accData);
+        }
+
+        }
+
+
+
+
+    data = [{
+        "_id": {
+            "$oid": "6086c606e818eff966ac703c"
+        },
+        "customerNumber": "012345678910",
+        "username": "Test Entry",
+        "email": "test@test.com",
+        "passcode": 123456,
+        "accounts": [
+            {
+                "standardAccount": {
+                    "accountNumber": 100001,
+                    "balance": 150,
+                    "accountLabel": "Main Account",
+                    "canWithdraw": true,
+                    "transactionHistory": [
+                        {
+                            "transactionId": 1,
+                            "time": "13:30:33",
+                            "date": "26/04/2021",
+                            "amount": 150,
+                            "from": "Mintd joining gift.",
+                            "to": "Name: Account"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+{
+    "_id": {
+        "$oid": "6087d13fe818eff966ac703d"
+    },
+    "customerNumber": "012345678911",
+    "username": "Lord Berbidge",
+    "email": "lizard@rich.com",
+    "passcode": 666666,
+    "accounts": [
+        {
+            "standardAccount": {
+                "accountNumber": 166666661,
+                "balance": 150,
+                "accountLabel": "BasicAccount",
+                "canWithdraw": true,
+                "transactionHistory": [
+                    {
+                        "transactionId": 1,
+                        "time": "13:30:33",
+                        "date": "26/04/2021",
+                        "amount": 150,
+                        "from": "Mintd joining gift.",
+                        "to": "Lord Berbidge: 166666661"
+                    }
+                ]
+            }
+        }
+    ]
+},{
+    "_id": {
+        "$oid": "60883bec892eed6ac78dcb7c"
+    },
+    "customerNumber": "012345678911",
+        "username": "CthuluKitteh",
+        "email": "great@old.one",
+        "passcode": 999666,
+        "accounts": [
+        {
+            "standardAccount": {
+                "accountNumber": 123456,
+                "balance": 150,
+                "accountLabel": "BasicAccount",
+                "canWithdraw": true,
+                "transactionHistory": [
+                    {
+                        "transactionId": 1,
+                        "time": "17:01:33",
+                        "date": "27/04/2021",
+                        "amount": 150,
+                        "from": "Mintd joining gift.",
+                        "to": "CthuluKitteh: 123456"
+                    }
+                ]
+            }
+        }
+    ]
+}]
+
 
     render() {
         return(
@@ -53,19 +123,28 @@ class MainAccounts extends React.Component {
                 <Header src={this.state.utilitySrc} />
 
                 <Title titleText={"Accounts"} />
-                <div className={'accounts-container'}>
-                    <AccountBox />
-                    <AccountBox />
-                    <AccountBox />
+                <userContext.consumer>
+                    {/*{({isLoggedIn}) =>*/}
+
+
+
+
+                    <div className={'accounts-container'}>
+                    {this.accountBoxPopulator()}
+
                 </div>
-                <UserContext.Provider value={{isRegistered: this.state.isRegistered, username: this.state.username, customerNumber: this.state.customerNumber}}>
+                    }
+                </userContext.consumer>
+
+
                     <Link to={'/create-pass-code'}>
                         <ActionButton btnText={"logout"}></ActionButton>
                     </Link>
-                </UserContext.Provider>
+
             </div>
         )
     }
 }
+
 
 export default MainAccounts
