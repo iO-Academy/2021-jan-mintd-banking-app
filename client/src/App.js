@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { Redirect } from 'react-router-dom'
 
 class App extends React.Component {
   constructor(props) {
@@ -9,12 +10,13 @@ class App extends React.Component {
     }
   }
 
+  // change line 15 to search ONLY registered cookie so isRegistered only refers to is|Registered=true cookie
   isRegistered(){
     let isRegistered = document.cookie
-    if(isRegistered === 'isRegistered=true' && isRegistered !== undefined && isRegistered !== null){
-      window.location = '/login';
+    if(isRegistered === 'isRegistered=true; username=test' && isRegistered !== undefined && isRegistered !== null){
+      return <Redirect to={'/login'} />
     } else {
-      window.location = '/registration';
+      return <Redirect to={'/registration'} />
     }
   }
 

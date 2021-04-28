@@ -5,6 +5,7 @@ import Registration from "./Components/Registration/Registration";
 import CreatePassCode from "./Components/CreatePassCode/CreatePassCode";
 import NotFound from "./Components/NotFound/NotFound";
 import Login from "./Components/Login/Login";
+import MainAccounts from "./Components/MainAccounts/MainAccounts";
 
 class Routing extends React.Component {
     render() {
@@ -16,6 +17,7 @@ class Routing extends React.Component {
                         <Route path="/registration" component={ Registration } />
                         <Route path="/create-pass-code" component={ CreatePassCode } />
                         <Route path="/login" component={ Login } />
+                        <Route path="/main-accounts" component={ MainAccounts } />
                         {/*<Route path="/users/:id" component={ Users } />*/}
                         <Route component={ NotFound } />
                     </Switch>

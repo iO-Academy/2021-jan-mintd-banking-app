@@ -47,6 +47,8 @@ class CreatePassCode extends React.Component {
                 btnText: 'Register',
                 link: '/main-accounts'
             })
+            // force re-render
+            this.setCookieWelcome()
             this.setCookie()
         } else {
             alert('Passcodes do not match')
@@ -56,13 +58,16 @@ class CreatePassCode extends React.Component {
     setCookie() {
         document.cookie = 'isRegistered=true'
     }
+    setCookieWelcome() {
+        document.cookie = 'username=' + this.state.username
+    }
 
-    allCookies = document.cookie['isRegistered']
+    // allCookies = document.cookie
 
     render(){
         return(
             <div className="content-container">
-                <p>{this.allCookies}</p>
+                {/*<p>{this.allCookies}</p>*/}
                 <Logo />
                 <Title titleText={"Create Your Passcode"} />
                 <div className={'auth-inputs-container'}>
