@@ -64,6 +64,8 @@ class CreatePassCode extends React.Component {
 
     // allCookies = document.cookie
 
+
+
     render(){
         return(
             <div className="content-container">

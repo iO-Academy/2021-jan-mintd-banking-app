@@ -19,12 +19,8 @@ class MainAccounts extends React.Component {
         }
     }
 
-    accountBoxPopulator = () => {
-        for (let accData of this.data.accounts) {
-            console.log(accData);
-        }
 
-        }
+
 
 
 
@@ -37,11 +33,12 @@ class MainAccounts extends React.Component {
         "username": "Test Entry",
         "email": "test@test.com",
         "passcode": 123456,
-        "accounts": [
+        "accountsArray": [
             {
-                "standardAccount": {
+                "account": {
                     "accountNumber": 100001,
-                    "balance": 150,
+                    "accountType": "Current Account",
+                    "balance": 150.52,
                     "accountLabel": "Main Account",
                     "canWithdraw": true,
                     "transactionHistory": [
@@ -49,7 +46,26 @@ class MainAccounts extends React.Component {
                             "transactionId": 1,
                             "time": "13:30:33",
                             "date": "26/04/2021",
-                            "amount": 150,
+                            "amount": 150.00,
+                            "from": "Mintd joining gift.",
+                            "to": "Name: Account"
+                        }
+                    ]
+                }
+            },
+            {
+                "account": {
+                    "accountNumber": 100001,
+                    "accountType": "Test Account",
+                    "balance": 250.00,
+                    "accountLabel": "Test Account",
+                    "canWithdraw": true,
+                    "transactionHistory": [
+                        {
+                            "transactionId": 1,
+                            "time": "13:30:33",
+                            "date": "26/04/2021",
+                            "amount": 250.00,
                             "from": "Mintd joining gift.",
                             "to": "Name: Account"
                         }
@@ -70,6 +86,7 @@ class MainAccounts extends React.Component {
         {
             "standardAccount": {
                 "accountNumber": 166666661,
+                "accountType": "Savers Account",
                 "balance": 150,
                 "accountLabel": "BasicAccount",
                 "canWithdraw": true,
@@ -98,6 +115,7 @@ class MainAccounts extends React.Component {
         {
             "standardAccount": {
                 "accountNumber": 123456,
+                "accountType": "Current Account",
                 "balance": 150,
                 "accountLabel": "BasicAccount",
                 "canWithdraw": true,
@@ -116,30 +134,27 @@ class MainAccounts extends React.Component {
     ]
 }]
 
+    accountBoxPopulator = () => {
+        let accountsArray = this.data[0].accountsArray
+        let accountBoxesList = accountsArray.map(function (accData){
+            return <AccountBox accNo={accData.account.accountNumber} accBal={accData.account.balance} accLabel={accData.account.accountLabel} accType={accData.account.accountType}/>
+        })
+        return accountBoxesList
+    }
 
     render() {
         return(
             <div className="content-container">
                 <Header src={this.state.utilitySrc} />
-
                 <Title titleText={"Accounts"} />
-                <userContext.consumer>
-                    {/*{({isLoggedIn}) =>*/}
 
-
-
-
-                    <div className={'accounts-container'}>
+                <div className={'accounts-container'}>
                     {this.accountBoxPopulator()}
-
                 </div>
-                    }
-                </userContext.consumer>
 
-
-                    <Link to={'/create-pass-code'}>
-                        <ActionButton btnText={"logout"}></ActionButton>
-                    </Link>
+                <Link to={'/create-pass-code'}>
+                    <ActionButton btnText={"logout"}></ActionButton>
+                </Link>
 
             </div>
         )
