@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var testAPIRouter = require('./routes/testAPI')
 var dbAPIRouter = require('./routes/dbHandler')
 var getAccountByCustomerNumberRouter = require('./routes/getAccountByCustomerNumber')
+var newAccountRouter = require('./routes/newAccount')
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use('/users', usersRouter);
 app.use('/testAPI', testAPIRouter)
 app.use('/dbHandler', dbAPIRouter)
 app.use('/getAccountByCustomerNumber', getAccountByCustomerNumberRouter)
+app.use('newAccount', newAccountRouter)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

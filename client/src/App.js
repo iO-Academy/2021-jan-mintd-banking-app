@@ -8,6 +8,7 @@ class App extends React.Component {
     this.state = {
       getAccountResponse: "",
       apiResponse: "",
+      postResponse: "",
       isRegistered: false,
       isLoggedIn: 'hello'
     }
@@ -34,6 +35,13 @@ class App extends React.Component {
         .then(res => res.text())
         .then(res => this.setState({ getAccountResponse: res }));
   }
+
+  postToAPI() {
+    fetch("http://localhost:9000/newAcount")
+        .then(res => res.text())
+        .then(res => this.setState({ postResponse: res }));
+  }
+
 
 
 
