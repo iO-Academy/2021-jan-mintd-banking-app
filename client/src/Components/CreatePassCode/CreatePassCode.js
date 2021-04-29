@@ -35,9 +35,9 @@ class CreatePassCode extends React.Component {
             secondPassCode: secondPassCode
         })
 
-        //do validation here for passcodes
         let firstPassCode = this.state.firstPassCode;
         const isSixDigits = /^[0-9]{6}$/
+        
         if (isSixDigits.test(firstPassCode)
             && isSixDigits.test(secondPassCode)
             && firstPassCode === secondPassCode
@@ -124,7 +124,7 @@ class CreatePassCode extends React.Component {
                     <TextInputBox type={"password"} keyup={(e) => this.secondPassCodeInputValidation(e)} placeholder={'re-enter 6 digit passcode'} />
                 </div>
                     <Link to={this.state.link}>
-                        <ActionButton click={() => this.postToAPI()} btnText={this.state.btnText} />
+                        <ActionButton click={() => this.postToAPI()} btnText={'Register'} />
                     </Link>
             </div>
         )
