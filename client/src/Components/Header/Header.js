@@ -6,10 +6,10 @@ class Header extends React.Component {
     render() {
         return(
             <div className="header">
-              <InactivityTimer/>
                 <Link to={'/main-accounts'}>
                     <img className="header-icon" src='/mintd-icon.png'/>
                 </Link>
+                <InactivityTimer/>
                 <Link to={this.props.utilLink}>
                     <img className="header-icon" src={this.props.src} />
                 </Link>

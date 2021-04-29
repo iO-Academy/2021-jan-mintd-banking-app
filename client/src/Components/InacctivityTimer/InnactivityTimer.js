@@ -16,7 +16,7 @@ export default class InactivityTimer extends Component {
             <div>
                 <IdleTimer
                     ref={ref => { this.idleTimer = ref }}
-                    timeout={1000 * 5 * 15}
+                    timeout={1000 * 60 * 5}
                     onActive={this.handleOnActive}
                     onIdle={this.handleOnIdle}
                     onAction={this.handleOnAction}
