@@ -1,85 +1,120 @@
-[{
-  "_id": {
-    "$oid": "6086c606e818eff966ac703c"
-  },
-  "customerNumber": "012345678910",
-  "username": "Test Entry",
-  "email": "test@test.com",
-  "passcode": 123456,
-  "accounts": [
-    {
-      "standardAccount": {
+[
+  {
+    "_id": {
+      "$oid": "6086c606e818eff966ac703c"
+    },
+    "customerNumber": "012345678910",
+    "username": "Test Entry",
+    "email": "test@test.com",
+    "passcode": 123456,
+    "accountsArray": [{
+      "account": {
         "accountNumber": 100001,
-        "balance": 150,
-        "accountLabel": "Main Account",
+        "accountType": "Current Account",
+        "balance": 150.52,
+        "accountLabel": "Everyday Account",
         "canWithdraw": true,
-        "transactionHistory": [
-          {
+        "transactionHistory": [{
+          "transactionId": 1,
+          "time": "13:30:33",
+          "date": "26/04/2021",
+          "amount": 150,
+          "from": "Mintd joining gift.",
+          "to": "Name: Account"
+        }]
+      }
+    },{
+      "account": {
+        "accountNumber": 445231,
+        "accountType": "Long Term Savings Account",
+        "balance": 2320.66,
+        "accountLabel": "College Fund",
+        "canWithdraw": true,
+        "transactionHistory": [{
+          "transactionId": 1,
+          "time": "13:30:33",
+          "date": "26/04/2021",
+          "amount": 150,
+          "from": "Mintd joining gift.",
+          "to": "Name: Account"
+        }]
+      }
+    },
+      {
+        "account": {
+          "accountNumber": 345221,
+          "accountType": "Savings Account",
+          "balance": 840.21,
+          "accountLabel": "Holiday Savings",
+          "canWithdraw": true,
+          "transactionHistory": [{
             "transactionId": 1,
             "time": "13:30:33",
             "date": "26/04/2021",
-            "amount": 150,
+            "amount": 250,
             "from": "Mintd joining gift.",
             "to": "Name: Account"
-          }
-        ]
-      }
-    }
-  ]
-},{
-  "_id": {
-    "$oid": "6087d13fe818eff966ac703d"
+          }]
+        }
+      }]
   },
-  "customerNumber": "012345678911",
-  "username": "Lord Berbidge",
-  "email": "lizard@rich.com",
-  "passcode": 666666,
-  "accounts": [
-    {
-      "standardAccount": {
-        "accountNumber": 166666661,
-        "balance": 150,
-        "accountLabel": "BasicAccount",
+  {
+    "_id": {
+      "$oid": "6086c606e818eff966ac703c"
+    },
+    "customerNumber": "012345678910",
+    "username": "Test Entry",
+    "email": "test@test.com",
+    "passcode": 123456,
+    "accountsArray": [{
+      "account": {
+        "accountNumber": 100001,
+        "accountType": "Current Account",
+        "balance": 150.52,
+        "accountLabel": "Everyday Account",
         "canWithdraw": true,
-        "transactionHistory": [
-          {
+        "transactionHistory": [{
+          "transactionId": 1,
+          "time": "13:30:33",
+          "date": "26/04/2021",
+          "amount": 150,
+          "from": "Mintd joining gift.",
+          "to": "Name: Account"
+        }]
+      }
+    },{
+      "account": {
+        "accountNumber": 445231,
+        "accountType": "Long Term Savings Account",
+        "balance": 2320.66,
+        "accountLabel": "College Fund",
+        "canWithdraw": true,
+        "transactionHistory": [{
+          "transactionId": 1,
+          "time": "13:30:33",
+          "date": "26/04/2021",
+          "amount": 150,
+          "from": "Mintd joining gift.",
+          "to": "Name: Account"
+        }]
+      }
+    },
+      {
+        "account": {
+          "accountNumber": 345221,
+          "accountType": "Savings Account",
+          "balance": 840.21,
+          "accountLabel": "Holiday Savings",
+          "canWithdraw": true,
+          "transactionHistory": [{
             "transactionId": 1,
             "time": "13:30:33",
             "date": "26/04/2021",
-            "amount": 150,
+            "amount": 250,
             "from": "Mintd joining gift.",
-            "to": "Lord Berbidge: 166666661"
-          }
-        ]
-      }
-    }
-  ]
-},{
-  "_id": {
-    "$oid": "60883bec892eed6ac78dcb7c"
-  },
-  "customerNumber": "012345678911",
-  "username": "CthuluKitteh",
-  "email": "great@old.one",
-  "passcode": 999666,
-  "accounts": [
-    {
-      "standardAccount": {
-        "accountNumber": 123456,
-        "balance": 150,
-        "accountLabel": "BasicAccount",
-        "canWithdraw": true,
-        "transactionHistory": [
-          {
-            "transactionId": 1,
-            "time": "17:01:33",
-            "date": "27/04/2021",
-            "amount": 150,
-            "from": "Mintd joining gift.",
-            "to": "CthuluKitteh: 123456"
-          }
-        ]
-      }
-    }
-  ]
-}]
+            "to": "Name: Account"
+          }]
+        }
+      }]
+  }
+]
