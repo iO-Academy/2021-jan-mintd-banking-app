@@ -11,6 +11,7 @@ class Registration extends React.Component{
     sessionStorage = window.sessionStorage
 
     constructor(props) {
+
         super(props);
         this.state = {
             isRegistered: false,
@@ -42,7 +43,6 @@ class Registration extends React.Component{
         return(
             <div className="content-container">
                 <Logo />
-
                 <Title titleText={"Registration"} />
                 <div className={'auth-inputs-container'}>
                     <TextInputBox type={'text'} change={(e) => this.nameInput(e)} placeholder={'name'} />

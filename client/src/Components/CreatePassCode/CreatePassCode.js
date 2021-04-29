@@ -20,7 +20,6 @@ class CreatePassCode extends React.Component {
             postResponse: '',
             btnText: 'Enter Valid Passcode',
             link: '/create-pass-code',
-            username: ''
         }
     }
 
@@ -33,10 +32,30 @@ class CreatePassCode extends React.Component {
 
     secondPassCodeInput = (e) => {
         let secondPassCode = e.target.value
-        this.setState ({
+        this.setState({
             secondPassCode: secondPassCode
+        })
+
+        //do validation here for passcodes
+        let firstPassCode = this.state.firstPassCode;
+        const isSixDigits = /^[0-9]{6}$/
+        if (isSixDigits.test(firstPassCode)
+            && isSixDigits.test(secondPassCode)
+            && firstPassCode === secondPassCode
+        ) {
+            this.setState({
+                passcode: firstPassCode,
+                btnText: 'Register',
+                link: '/main-accounts'
+            })
+        } else if (firstPassCode !== secondPassCode && secondPassCode.length === 6){
+            return alert('Passcodes do not match')
+        } else if(firstPassCode >6 || secondPassCode >6 || firstPassCode <6 || secondPassCode <6){
+            this.setState({
+                btnText: 'Enter Valid Passcode',
+            })
         }
-    )}
+    }
 
     updateUsername = () => {
         let newName = this.props.username
@@ -46,30 +65,33 @@ class CreatePassCode extends React.Component {
     }
 
 
-    // s2t3 woops
-    validatePassCode(){
-        let first = this.state.firstPassCode;
-        let second = this.state.secondPassCode;
-        if(first === second) {
-            this.setState({
-                passcode: first,
-                btnText: 'Register',
-                link: '/main-accounts'})
-            this.postToAPI(this.template)
-        } else {
-            alert('Passcodes do not match');
-        }
+    validateFormat() {
+            this.setCookieWelcome()
+            this.setCookie()
+
+            // Post to DB
+            return this.postToAPI()
     }
+
+    setCookie() {
+        document.cookie = 'isRegistered=true'
+    }
+    setCookieWelcome() {
+        document.cookie = 'username=' + this.state.username
+    }
+
+    // allCookies = document.cookie
+
 
     //POST TEMPLATE//
     //Create NEW CUSTOMER
-    accountNumberGenerator = Math.floor(Math.random() * 10000000)
+    accountNumberGenerator = Math.floor(Math.random() * 100000000)
     dateCreated = new Date().toLocaleDateString()
     timeCreated = new Date().toLocaleTimeString()
 
 
     //POST ROUTE
-    postToAPI() {
+    postToAPI = () => {
         const template = {
             "customerNumber": this.state.customerNumber,
             "username": this.state.username,
@@ -108,14 +130,16 @@ class CreatePassCode extends React.Component {
     render(){
         return(
             <div className="content-container">
+                {/*<p>{this.allCookies}</p>*/}
                 <Logo />
                 <Title titleText={"Create Your Passcode"} />
                 <div className={'auth-inputs-container'}>
                     <TextInputBox type={"password"} change={(e) => this.firstPassCodeInput(e)} placeholder={'create 6 digit passcode'} />
-                    <TextInputBox type={"password"} change={(e) => this.secondPassCodeInput(e)} placeholder={'re-enter 6 digit passcode'} />
+                    <TextInputBox type={"password"} keyup={(e) => this.secondPassCodeInput(e)} placeholder={'re-enter 6 digit passcode'} />
                 </div>
                     <Link to={this.state.link}>
-                        <ActionButton click={() => {this.validatePassCode()}} btnText={this.state.btnText} />
+                        <ActionButton click={() => this.validateFormat()} btnText={this.state.btnText} />
+
                     </Link>
             </div>
         )

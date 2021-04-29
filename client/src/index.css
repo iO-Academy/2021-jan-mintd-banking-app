@@ -103,3 +103,54 @@ input:focus {
 .notFoundBtn {
 
 }
+
+.account-box {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  height: 110px;
+  width: 100%;
+  background: #F3FFFE;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1.7rem;
+  margin-bottom: 30px;
+}
+
+.account-info {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.account-label {
+  font-size: 1.9rem;
+  font-weight: 500;
+}
+
+.account-type-delete {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.header-icon {
+  height: 40px;
+}
+
+h1.title {
+  text-align: left;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.red-x-icon {
+  width: 20px;
+}

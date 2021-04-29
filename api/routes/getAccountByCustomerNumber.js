@@ -23,7 +23,8 @@ router.get('/:customerNumber', jsonParser, function(request, response) {
         const usersCollection = client.db('mintd').collection('users')
         const customerData = await usersCollection.findOne({"customerNumber": customerNo})
 
-        response.send(customerData);
+        // response.send(customerData);
+        response.send('response');
     })
 });
 
