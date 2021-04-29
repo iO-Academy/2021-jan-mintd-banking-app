@@ -15,9 +15,24 @@ class Login extends React.Component {
             passcode: '',
             btnText: 'Enter your details',
             link: '/login',
-            username: 'test'
+            username: 'test',
+            getAccountResponse: '',
         }
     }
+
+    componentDidMount(){
+        sessionStorage.clear()
+    }
+
+
+    callAPIforAccount = (customerNumber) => {
+        //this is fetching from the getAccountByName page in api/routes
+        let getRoute = "http://localhost:9000/getAccountByCustomerNumber/" + customerNumber
+        fetch(getRoute)
+            .then(res => res.json())
+            .then(res => this.setState({ getAccountResponse: res}));
+    }
+
 
     validateLogin() {
         const isSixDigits = /^[0-9]{6}$/
@@ -28,21 +43,47 @@ class Login extends React.Component {
             && isSixDigits.test(second)
         ){
             this.setState({
-                passcode: first,
+                customerNumber: this.state.customerNumber,
+                passcode: this.state.passcode,
                 btnText: 'Login',
+            })
+            this.validateUserDetails()
+        } else {
+            console.log('test')
+            console.log(first)
+            console.log(second)
+            alert('Your Details are Incorrect')
+        }
+    }
+
+    validateUserDetails() {
+        let dbCustomerNumber = this.state.getAccountResponse.customerNumber
+        let dbCustomerPasscode = this.state.getAccountResponse.passcode
+        let enteredCustomerNumber = this.state.customerNumber
+        let enteredCustomerPasscode = this.state.passcode
+
+        if(dbCustomerNumber == enteredCustomerNumber && dbCustomerPasscode == enteredCustomerPasscode){
+            sessionStorage.setItem('customerNumber', dbCustomerNumber)
+            this.setState({
                 link: '/main-accounts'
             })
+            console.log('details correct')
         } else {
-            alert('Your Details are Incorrect')
+            alert('Details are Incorrect, please try again')
         }
     }
 
     customerNumberInput = (e) => {
         let customerNumber = e.target.value
-        this.setState ({
-            customerNumber: customerNumber
+        const isTwelveDigits = /^[0-9]{12}$/
+        if(isTwelveDigits.test(customerNumber)){
+                this.callAPIforAccount(customerNumber)
+            this.setState ({
+                    customerNumber: customerNumber
+                }
+            )
             }
-        )}
+        }
 
     passCodeInput = (e) => {
         let passcode = e.target.value
@@ -60,14 +101,12 @@ class Login extends React.Component {
                 <Title titleText={"Login"} />
                 <h2 className={'welcome-msg'}>Welcome Back</h2>
                 <div className={'auth-inputs-container'}>
-                    <TextInputBox type={"username"} change={(e) => this.customerNumberInput(e)} placeholder='1234-5678-9999' />
+                    <TextInputBox type={"username"} keyup={(e) => this.customerNumberInput(e)} placeholder='1234-5678-9999' />
                     <TextInputBox type={"password"} change={(e) => this.passCodeInput(e)} placeholder={'Enter your 6 digit passcode'} />
                 </div>
-                <UserContext.Provider value={{isRegistered: this.state.isRegistered, username: this.state.username, customerNumber: this.state.customerNumber}}>
-                    <Link to={this.state.link}>
-                        <ActionButton click={() => this.validateLogin()} btnText={this.state.btnText}></ActionButton>
-                    </Link>
-                </UserContext.Provider>
+                <Link to={this.state.link}>
+                    <ActionButton click={() => this.validateLogin()} btnText={this.state.btnText} />
+                </Link>
             </div>
         )
     }
