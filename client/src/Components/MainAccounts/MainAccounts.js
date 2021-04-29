@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../Header/Header";
 import Title from "../Title/Title";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import ActionButton from "../ActionButton/ActionButton";
 import AccountBox from "../AccountBox/AccountBox";
 // import BeatLoader from "react-spinners/ClipLoader";
@@ -46,6 +46,11 @@ class MainAccounts extends React.Component {
         this.callAPIforAccount()
     }
 
+    logout() {
+        sessionStorage.clear()
+        return <Redirect to={'/login'} />
+    }
+
 
     render() {
 
@@ -69,7 +74,7 @@ class MainAccounts extends React.Component {
                     </div>
 
                     <Link to={'/login'}>
-                        <ActionButton btnText={"logout"}></ActionButton>
+                        <ActionButton click={this.logout()} btnText={"logout"}></ActionButton>
                     </Link>
 
                 </div>

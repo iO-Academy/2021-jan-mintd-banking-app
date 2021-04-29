@@ -1,6 +1,7 @@
 import React from 'react'
 import IdleTimer from 'react-idle-timer'
 import {Component} from "react/cjs/react.production.min";
+import {Redirect} from "react-router-dom";
 
 export default class InactivityTimer extends Component {
     constructor(props) {
@@ -40,6 +41,8 @@ export default class InactivityTimer extends Component {
         console.log('user is idle', event)
         console.log('last active', this.idleTimer.getLastActiveTime())
         console.log("call user log out function.")
+        sessionStorage.clear()
+        window.location = '/login'
     }
 }
 
