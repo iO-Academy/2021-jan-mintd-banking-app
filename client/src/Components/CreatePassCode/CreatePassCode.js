@@ -14,7 +14,8 @@ class CreatePassCode extends React.Component {
             secondPassCode: '',
             passCode: '',
             btnText: 'Enter Valid Passcode',
-            link: '/create-pass-code'
+            link: '/create-pass-code',
+            username: ''
         }
     }
 
