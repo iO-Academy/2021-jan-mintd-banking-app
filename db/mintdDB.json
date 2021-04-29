@@ -82,4 +82,56 @@
       }
     }
   ]
+},{
+  "_id": {
+    "$oid": "608977ca31e92c9d6b8df6d4"
+  },
+  "customerNumber": "012345678911",
+  "username": "Yogsothoth",
+  "email": "greater@old.one",
+  "passcode": 999666,
+  "standardAccount": {
+    "accountNumber": 123456,
+    "balance": 150,
+    "accountLabel": "BasicAccount",
+    "canWithdraw": true,
+    "transactionHistory": [
+      {
+        "transactionId": 1,
+        "time": "17:01:33",
+        "date": "27/04/2021",
+        "amount": 150,
+        "from": "Mintd joining gift.",
+        "to": "Ryleh: 123456"
+      }
+    ]
+  }
+},{
+  "_id": {
+    "$oid": "6089852531e92c9d6b8df6e3"
+  },
+  "customerNumber": "012189089090",
+  "username": "PostManDem",
+  "email": "",
+  "accountsArray": [
+    {
+      "account": {
+        "accountNumber": 1007126,
+        "accountType": "CurrentAccount",
+        "balance": 150,
+        "accountLabel": "CurrentAccount",
+        "canWithdraw": true,
+        "transactionHistory": [
+          {
+            "transactionId": 1,
+            "time": "16:53:59",
+            "date": "28/04/2021",
+            "amount": 150,
+            "from": "Mintd joining gift.",
+            "to": "PostManDem"
+          }
+        ]
+      }
+    }
+  ]
 }]
