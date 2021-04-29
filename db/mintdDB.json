@@ -1,0 +1,120 @@
+[
+  {
+    "_id": {
+      "$oid": "6086c606e818eff966ac703c"
+    },
+    "customerNumber": "012345678910",
+    "username": "Test Entry",
+    "email": "test@test.com",
+    "passcode": 123456,
+    "accountsArray": [{
+      "account": {
+        "accountNumber": 100001,
+        "accountType": "Current Account",
+        "balance": 150.52,
+        "accountLabel": "Everyday Account",
+        "canWithdraw": true,
+        "transactionHistory": [{
+          "transactionId": 1,
+          "time": "13:30:33",
+          "date": "26/04/2021",
+          "amount": 150,
+          "from": "Mintd joining gift.",
+          "to": "Name: Account"
+        }]
+      }
+    },{
+      "account": {
+        "accountNumber": 445231,
+        "accountType": "Long Term Savings Account",
+        "balance": 2320.66,
+        "accountLabel": "College Fund",
+        "canWithdraw": true,
+        "transactionHistory": [{
+          "transactionId": 1,
+          "time": "13:30:33",
+          "date": "26/04/2021",
+          "amount": 150,
+          "from": "Mintd joining gift.",
+          "to": "Name: Account"
+        }]
+      }
+    },
+      {
+        "account": {
+          "accountNumber": 345221,
+          "accountType": "Savings Account",
+          "balance": 840.21,
+          "accountLabel": "Holiday Savings",
+          "canWithdraw": true,
+          "transactionHistory": [{
+            "transactionId": 1,
+            "time": "13:30:33",
+            "date": "26/04/2021",
+            "amount": 250,
+            "from": "Mintd joining gift.",
+            "to": "Name: Account"
+          }]
+        }
+      }]
+  },
+  {
+    "_id": {
+      "$oid": "6086c606e818eff966ac703c"
+    },
+    "customerNumber": "012345678910",
+    "username": "Test Entry",
+    "email": "test@test.com",
+    "passcode": 123456,
+    "accountsArray": [{
+      "account": {
+        "accountNumber": 100001,
+        "accountType": "Current Account",
+        "balance": 150.52,
+        "accountLabel": "Everyday Account",
+        "canWithdraw": true,
+        "transactionHistory": [{
+          "transactionId": 1,
+          "time": "13:30:33",
+          "date": "26/04/2021",
+          "amount": 150,
+          "from": "Mintd joining gift.",
+          "to": "Name: Account"
+        }]
+      }
+    },{
+      "account": {
+        "accountNumber": 445231,
+        "accountType": "Long Term Savings Account",
+        "balance": 2320.66,
+        "accountLabel": "College Fund",
+        "canWithdraw": true,
+        "transactionHistory": [{
+          "transactionId": 1,
+          "time": "13:30:33",
+          "date": "26/04/2021",
+          "amount": 150,
+          "from": "Mintd joining gift.",
+          "to": "Name: Account"
+        }]
+      }
+    },
+      {
+        "account": {
+          "accountNumber": 345221,
+          "accountType": "Savings Account",
+          "balance": 840.21,
+          "accountLabel": "Holiday Savings",
+          "canWithdraw": true,
+          "transactionHistory": [{
+            "transactionId": 1,
+            "time": "13:30:33",
+            "date": "26/04/2021",
+            "amount": 250,
+            "from": "Mintd joining gift.",
+            "to": "Name: Account"
+          }]
+        }
+      }]
+  }
+]
