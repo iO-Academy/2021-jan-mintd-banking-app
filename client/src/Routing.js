@@ -21,7 +21,6 @@ class Routing extends React.Component {
                         <Route path="/create-pass-code" component={ CreatePassCode } />
                         <Route path="/login" component={ Login } />
                         <Route path="/main-accounts" component={ MainAccounts } />
-                        {/*<Route path="/users/:id" component={ Users } />*/}
                         <Route component={ NotFound } />
                     </Switch>
                 </div>
