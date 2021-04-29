@@ -4,7 +4,6 @@ import Title from "../Title/Title";
 import {Link, Redirect} from "react-router-dom";
 import ActionButton from "../ActionButton/ActionButton";
 import AccountBox from "../AccountBox/AccountBox";
-// import BeatLoader from "react-spinners/ClipLoader";
 
 class MainAccounts extends React.Component {
 
@@ -15,7 +14,6 @@ class MainAccounts extends React.Component {
                 utilitySrc: '/menu-icon.png',
                 name:"dadad",
                 username: sessionStorage.getItem("username"),
-                // customerNumber: sessionStorage.getItem("customerNumber"),
                 customerNumber: sessionStorage.getItem("customerNumber"),
                 getAccountResponse: "",
         }
@@ -51,15 +49,11 @@ class MainAccounts extends React.Component {
         return <Redirect to={'/login'} />
     }
 
-
     render() {
 
         if(this.state.getAccountResponse === ""){
             return (
                 <div></div>
-                // <div id={'loader'}>
-                //     <BeatLoader />
-                // </div>
             )
         } else {
             return(
