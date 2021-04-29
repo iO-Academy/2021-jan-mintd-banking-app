@@ -68,7 +68,7 @@ class MainAccounts extends React.Component {
                     </div>
 
                     <Link to={'/login'}>
-                        <ActionButton click={this.logout()} btnText={"logout"}></ActionButton>
+                        <ActionButton click={this.logout()} btnText={"logout"} />
                     </Link>
 
                 </div>

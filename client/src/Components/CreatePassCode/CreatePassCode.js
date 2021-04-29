@@ -47,6 +47,7 @@ class CreatePassCode extends React.Component {
                 btnText: 'Register',
                 link: '/main-accounts'
             })
+            this.postToAPI()
         } else if (firstPassCode !== secondPassCode && secondPassCode.length === 6){
             return alert('Passcodes do not match')
         } else if(firstPassCode >6 || secondPassCode >6 || firstPassCode <6 || secondPassCode <6){
@@ -124,7 +125,7 @@ class CreatePassCode extends React.Component {
                     <TextInputBox type={"password"} keyup={(e) => this.secondPassCodeInputValidation(e)} placeholder={'re-enter 6 digit passcode'} />
                 </div>
                     <Link to={this.state.link}>
-                        <ActionButton click={() => this.postToAPI()} btnText={'Register'} />
+                        <ActionButton btnText={'Register'} />
                     </Link>
             </div>
         )
