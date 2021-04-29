@@ -25,6 +25,6 @@ router.get('/:customerNumber', jsonParser, function(request, response) {
 
         response.send(customerData);
     })
-});
+})
 
 module.exports = router;

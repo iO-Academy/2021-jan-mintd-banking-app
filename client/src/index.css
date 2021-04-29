@@ -8,11 +8,11 @@
 
 html {
   font-size: 62.5%;
+  /*padding: 30px;*/
 
 }
 
 body {
-  margin: 30px;
   height: 100%;
   font-family: 'Montserrat', sans-serif;
   color: #153B50;
@@ -25,7 +25,7 @@ code {
     monospace;
 }
 
-input {
+input, select {
   color: #153B50;
   font-size: 2rem;
   font-weight: 400;
@@ -38,18 +38,29 @@ input {
   margin-bottom: 20px;
 }
 
+
+.custom-select {
+  width: auto;
+  position: relative;
+}
+.select-selected {
+  color: red;
+}
+
 input:focus {
   border-style: hidden;
-
 }
 
 .main-container {
+  /*margin: 30px;*/
   position: relative;
   bottom: 0;
-  height: calc(100vh - 60px);
+  height: 100vh;
+  /*height: calc(100vh - 60px);*/
 }
 
 .content-container {
+  padding: 30px;
   height: 100%;
   position: relative;
   bottom: 0;
@@ -89,14 +100,15 @@ input:focus {
   font-size: 2.4rem;
   font-weight: 500;
   display: block;
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  bottom: 30px;
   background: #03DAC5;
   border-style: hidden;
   /*note that box shadow is 15px and 0.15 alpha on action buttons*/
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
-  width: 100%;
+  width: calc(100% - 60px);
+  margin-right: 30px;
   height: 50px;
 }
 
@@ -146,7 +158,7 @@ input:focus {
 }
 
 h1.title {
-  text-align: left;
+  text-align: center;
   margin-top: 40px;
   margin-bottom: 20px;
 }
@@ -154,3 +166,4 @@ h1.title {
 .red-x-icon {
   width: 20px;
 }
+

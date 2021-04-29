@@ -3,7 +3,7 @@ import Logo from "../Logo/Logo";
 import Title from "../Title/Title";
 import TextInputBox from "../TextInputBox/TextInputBox";
 import UserContext from "../UserContext";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import ActionButton from "../ActionButton/ActionButton";
 
 class CreatePassCode extends React.Component {
@@ -13,9 +13,9 @@ class CreatePassCode extends React.Component {
             firstPassCode: '',
             secondPassCode: '',
             passCode: '',
-            btnText: 'Enter Valid Passcode',
-            link: '/create-pass-code',
-            username: ''
+            link: "/create-pass-code",
+            username: sessionStorage.getItem("username"),
+            customerNumber: sessionStorage.getItem("customerNumber")
         }
     }
 
@@ -44,14 +44,17 @@ class CreatePassCode extends React.Component {
         ){
            this.setState({
                 passcode: first,
-                btnText: 'Register',
-                link: '/main-accounts'
             })
             // force re-render
             this.setCookieWelcome()
             this.setCookie()
+            console.log('validation test')
+            this.setState({
+                    link: "/main-accounts"
+                })
+            return <Redirect to={"/main-accounts"} />
         } else {
-            alert('Passcodes do not match')
+            alert('Passcodes need to match and contain 6 digits only')
         }
     }
 
@@ -78,7 +81,7 @@ class CreatePassCode extends React.Component {
                 </div>
                 <UserContext.Provider value={{isRegistered: this.state.isRegistered, username: this.state.username, customerNumber: this.state.customerNumber}}>
                     <Link to={this.state.link}>
-                        <ActionButton click={() => this.validateFormat()} btnText={this.state.btnText}></ActionButton>
+                        <ActionButton click={() => this.validateFormat()} btnText={"Register"}></ActionButton>
                     </Link>
                 </UserContext.Provider>
             </div>

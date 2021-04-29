@@ -1,8 +1,7 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 class AccountBox extends React.Component {
-
-
 
     render() {
         return (
@@ -16,7 +15,9 @@ class AccountBox extends React.Component {
                 </div>
                 <div className="account-type-delete">
                     <div><p>{this.props.accType}</p></div>
-                    <div><img className="red-x-icon" src='/red-x-icon.png'/></div>
+                    <Link to={'/close-account'}>
+                        <div><img className="red-x-icon" src='/red-x-icon.png'/></div>
+                    </Link>
                 </div>
             </div>
         );

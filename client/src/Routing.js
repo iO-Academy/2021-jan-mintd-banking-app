@@ -6,6 +6,9 @@ import CreatePassCode from "./Components/CreatePassCode/CreatePassCode";
 import NotFound from "./Components/NotFound/NotFound";
 import Login from "./Components/Login/Login";
 import MainAccounts from "./Components/MainAccounts/MainAccounts";
+import Menu from "./Components/Menu/Menu";
+import CloseAccount from "./Components/CloseAccount/CloseAccount";
+import AddNewAccount from "./Components/AddNewAccount/AddNewAccount";
 
 class Routing extends React.Component {
     render() {

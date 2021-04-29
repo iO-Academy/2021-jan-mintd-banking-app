@@ -7,6 +7,7 @@ import TextInputBox from "../TextInputBox/TextInputBox";
 import {Link} from "react-router-dom";
 
 class Registration extends React.Component{
+    sessionStorage = window.sessionStorage
 
     constructor(props) {
 
@@ -22,15 +23,17 @@ class Registration extends React.Component{
         let username = e.target.value
         this.setState ({
             username: username
-            }
-        )}
-
+        })
+        this.sessionStorage.setItem("username", username)
+    }
     customerNumberInput = (e) => {
         let customerNumber = e.target.value
         this.setState ({
             customerNumber: customerNumber
-            }
-        )}
+        })
+        this.sessionStorage.setItem("customerNumber", customerNumber)
+    }
+
 
     render(){
         return(
@@ -51,3 +54,5 @@ class Registration extends React.Component{
     }
 }
 export default Registration;
+
+
