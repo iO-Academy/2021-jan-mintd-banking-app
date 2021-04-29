@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2f529ec-4f80-4b6e-ad8b-1f4426b5f5b7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/client/src/Components/AccountBox/AccountBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/AccountBox/AccountBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/MainAccounts/MainAccounts.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/MainAccounts/MainAccounts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/InacctivityTimer/InnactivityTimer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Header/Header.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,6 +16,13 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -44,7 +54,7 @@
       <option name="presentableId" value="Default" />
       <updated>1619550366525</updated>
       <workItem from="1619550370365" duration="666000" />
-      <workItem from="1619601493053" duration="4267000" />
+      <workItem from="1619601493053" duration="7711000" />
     </task>
     <servers />
   </component>
