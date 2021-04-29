@@ -63,36 +63,6 @@ class CreatePassCode extends React.Component {
         })
     }
 
-
-    // validationAndRouting() {
-    //     const isSixDigits = /^[0-9]{6}$/
-    //     let first = this.state.firstPassCode;
-    //     let second = this.state.secondPassCode;
-    //
-    //     if(isSixDigits.test(first)
-    //         && isSixDigits.test(second)
-    //         && first === second
-    //     ){
-    //        this.setState({
-    //             passcode: first,
-    //         })
-    //         this.setCookie()
-    //         this.setState({
-    //                 link: "/main-accounts"
-    //             })
-    //         this.postToAPI()
-    //         return <Redirect to={"/main-accounts"} />
-    //     } else {
-    //         alert('Passcodes need to match and contain 6 digits only')
-    //     }
-    // }
-
-    // validateFormat() {
-    //         this.setCookie()
-    //         this.postToAPI()
-    //         // return <Redirect to={"/main-accounts"} />
-    // }
-
     setCookie() {
         document.cookie = 'isRegistered=true'
     }
@@ -154,7 +124,6 @@ class CreatePassCode extends React.Component {
                     <TextInputBox type={"password"} keyup={(e) => this.secondPassCodeInputValidation(e)} placeholder={'re-enter 6 digit passcode'} />
                 </div>
                     <Link to={this.state.link}>
-                        {/*<ActionButton click={() => this.validationAndRouting()} btnText={"Register"}></ActionButton>*/}
                         <ActionButton click={() => this.postToAPI()} btnText={this.state.btnText} />
                     </Link>
             </div>
