@@ -16,7 +16,7 @@ class App extends React.Component {
   // change line 15 to search ONLY registered cookie so isRegistered only refers to is|Registered=true cookie
   isRegistered(){
     let isRegistered = document.cookie
-    if(isRegistered === 'isRegistered=true; username=test' && isRegistered !== undefined && isRegistered !== null){
+    if(isRegistered === 'isRegistered=true' && isRegistered !== undefined && isRegistered !== null){
       return <Redirect to={'/login'} />
     } else {
       return <Redirect to={'/registration'} />

@@ -46,7 +46,7 @@ class CreatePassCode extends React.Component {
                 passcode: first,
             })
             // force re-render
-            this.setCookieWelcome()
+            // this.setCookieWelcome()
             this.setCookie()
             console.log('validation test')
             this.setState({
@@ -61,9 +61,9 @@ class CreatePassCode extends React.Component {
     setCookie() {
         document.cookie = 'isRegistered=true'
     }
-    setCookieWelcome() {
-        document.cookie = 'username=' + this.state.username
-    }
+    // setCookieWelcome() {
+    //     document.cookie = 'username=' + this.state.username
+    // }
 
     // allCookies = document.cookie
 
