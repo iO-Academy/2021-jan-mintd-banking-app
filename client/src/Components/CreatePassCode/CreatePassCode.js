@@ -55,14 +55,11 @@ class CreatePassCode extends React.Component {
            this.setState({
                 passcode: first,
             })
-            // force re-render
-            // this.setCookieWelcome()
             this.setCookie()
-            console.log('validation test')
             this.setState({
                     link: "/main-accounts"
                 })
-            this.postToAPI(this.template)
+            this.postToAPI()
             return <Redirect to={"/main-accounts"} />
         } else {
             alert('Passcodes need to match and contain 6 digits only')
@@ -71,11 +68,7 @@ class CreatePassCode extends React.Component {
 
     setCookie() {
         document.cookie = 'isRegistered=true'
-
     }
-    // setCookieWelcome() {
-    //     document.cookie = 'username=' + this.state.username
-    // }
 
     // allCookies = document.cookie
 

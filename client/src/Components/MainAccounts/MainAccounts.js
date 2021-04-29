@@ -16,7 +16,7 @@ class MainAccounts extends React.Component {
                 name:"dadad",
                 username: sessionStorage.getItem("username"),
                 // customerNumber: sessionStorage.getItem("customerNumber"),
-                customerNumber: "012345678910",
+                customerNumber: sessionStorage.getItem("customerNumber"),
                 getAccountResponse: "",
         }
     }
@@ -34,8 +34,9 @@ class MainAccounts extends React.Component {
     }
 
     callAPIforAccount() {
+        let custNumb = this.state.customerNumber
         //this is fetching from the getAccountByName page in api/routes
-          fetch("http://localhost:9000/getAccountByCustomerNumber/012345678910")
+          fetch("http://localhost:9000/getAccountByCustomerNumber/" + custNumb)
             .then(res => res.json())
             .then(res => this.setState({ getAccountResponse: res }));
     }

@@ -57,7 +57,8 @@ class Login extends React.Component {
             <div className="content-container">
                 <Logo />
 
-                <Title titleText={"Welcome Back " + this.state.username} />
+                <Title titleText={"Login"} />
+                <h2 className={'welcome-msg'}>Welcome Back</h2>
                 <div className={'auth-inputs-container'}>
                     <TextInputBox type={"username"} change={(e) => this.customerNumberInput(e)} placeholder='1234-5678-9999' />
                     <TextInputBox type={"password"} change={(e) => this.passCodeInput(e)} placeholder={'Enter your 6 digit passcode'} />
