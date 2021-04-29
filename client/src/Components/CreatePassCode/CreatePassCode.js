@@ -7,6 +7,7 @@ import {Link, Redirect} from "react-router-dom";
 import ActionButton from "../ActionButton/ActionButton";
 
 class CreatePassCode extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -15,7 +16,8 @@ class CreatePassCode extends React.Component {
             passCode: '',
             link: "/create-pass-code",
             username: sessionStorage.getItem("username"),
-            customerNumber: sessionStorage.getItem("customerNumber")
+            customerNumber: sessionStorage.getItem("customerNumber"),
+            postResponse: '',
         }
     }
 
@@ -23,17 +25,25 @@ class CreatePassCode extends React.Component {
         let firstPassCode = e.target.value
         this.setState ({
             firstPassCode: firstPassCode
-            }
-        )}
+        }
+    )}
 
     secondPassCodeInput = (e) => {
         let secondPassCode = e.target.value
         this.setState ({
             secondPassCode: secondPassCode
-            }
-        )}
+        }
+    )}
 
-    validateFormat() {
+    updateUsername = () => {
+        let newName = this.props.username
+        this.setState({
+            username: newName
+        })
+    }
+
+
+    validationAndRouting() {
         const isSixDigits = /^[0-9]{6}$/
         let first = this.state.firstPassCode;
         let second = this.state.secondPassCode;
@@ -52,6 +62,7 @@ class CreatePassCode extends React.Component {
             this.setState({
                     link: "/main-accounts"
                 })
+            this.postToAPI(this.template)
             return <Redirect to={"/main-accounts"} />
         } else {
             alert('Passcodes need to match and contain 6 digits only')
@@ -60,6 +71,7 @@ class CreatePassCode extends React.Component {
 
     setCookie() {
         document.cookie = 'isRegistered=true'
+
     }
     // setCookieWelcome() {
     //     document.cookie = 'username=' + this.state.username
@@ -67,7 +79,48 @@ class CreatePassCode extends React.Component {
 
     // allCookies = document.cookie
 
+    //POST TEMPLATE//
+    //Create NEW CUSTOMER
+    accountNumberGenerator = Math.floor(Math.random() * 10000000)
+    dateCreated = new Date().toLocaleDateString()
+    timeCreated = new Date().toLocaleTimeString()
 
+    //POST ROUTE
+    postToAPI() {
+        const template = {
+            "customerNumber": this.state.customerNumber,
+            "username": this.state.username,
+            "email": "",
+            "passcode": this.state.passcode,
+            "accountsArray" : [
+                {
+                    "account": {
+                        "accountNumber": this.accountNumberGenerator,
+                        "accountType": "CurrentAccount",
+                        "balance": 150,
+                        "accountLabel": "CurrentAccount",
+                        "canWithdraw": true,
+                        "transactionHistory": [{
+                            "transactionId": 1,
+                            "time": this.timeCreated,
+                            "date": this.dateCreated,
+                            "amount": 150,
+                            "from": "Mintd joining gift.",
+                            "to": this.state.username
+                        }]
+                    }
+                }]
+        }
+
+        fetch("http://localhost:9000/newAccount", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(template)
+        })
+            .then(res => res.json())
+            .then(res => this.setState({ postResponse: res })
+            )
+    }
 
     render(){
         return(
@@ -79,11 +132,9 @@ class CreatePassCode extends React.Component {
                     <TextInputBox type={"password"} change={(e) => this.firstPassCodeInput(e)} placeholder={'create 6 digit passcode'} />
                     <TextInputBox type={"password"} change={(e) => this.secondPassCodeInput(e)} placeholder={'re-enter 6 digit passcode'} />
                 </div>
-                <UserContext.Provider value={{isRegistered: this.state.isRegistered, username: this.state.username, customerNumber: this.state.customerNumber}}>
                     <Link to={this.state.link}>
-                        <ActionButton click={() => this.validateFormat()} btnText={"Register"}></ActionButton>
+                        <ActionButton click={() => this.validationAndRouting()} btnText={"Register"}></ActionButton>
                     </Link>
-                </UserContext.Provider>
             </div>
         )
     }
